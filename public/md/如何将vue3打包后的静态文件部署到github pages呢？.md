@@ -1,0 +1,188 @@
+---
+typora-root-url: ..\img
+---
+
+### 如何将vue3打包后的静态文件部署到github pages呢？
+
+
+
+tips：<u>1.利用vite构建的vue3项目</u>
+
+​		   <u>2.打包的是纯前端项目</u>
+
+
+
+**从打包前开始：**
+
+#### 1. 修改公共路径
+
+修改`vite.config.js`中的`base`路径
+
+确保你的`vite.config.js`文件中`base`选项被正确设置。如果你的应用将部署在子目录下（例如：`https://yourusername.github.io/your-repo-name/`），你需要将`base`选项设置为该子目录。
+
+```
+// vite.config.js
+export default {
+  base: '/your-repo-name/',
+};
+```
+
+**之后，有两种方式可选，**
+
+- **其一：在github上直接主分支上部署静态文件；**
+
+- **其二：在github上新建分支，将静态文件部署到新分支的根目录下**
+
+
+
+#### 方法一步骤：
+
+##### 2.1 将打包构建路径改为/docs
+
+修改`vite.config.js`中的`build`路径
+
+```
+ export default {
+ 	//修改构建路径
+    build: {
+      outDir: 'docs', // 改变输出目录
+    }
+ }
+```
+
+tips：<u>如果有配置会影响/docs文件夹的代码，注意进行修改</u>
+
+以本人某项目为例：
+
+- eslint
+
+​			需要在忽略配置中添加 "docs"，当前最新版本的eslint直接在`eslint.config`添加
+
+```
+export default [
+	ignores: [
+      'docs/**',
+    ],
+]
+```
+
+- prettier
+
+​			在`.prettierignore`中添加
+
+```
+/docs/*
+```
+
+- stylelint
+
+​			在`.stylelintignore`中添加
+
+```
+/docs/*
+```
+
+
+
+##### 2.2 打包
+
+在dos命令窗口输入：
+
+```
+npm run build 
+```
+
+**或者**npm脚本工具里点击build：
+
+![](/githubPages/build.png)
+
+##### 2.3 上传到github
+
+tip：<u>在此之前先建好远程仓库</u>
+
+在Git Bash上：
+
+```
+git init
+git add .
+git commit -m '(简述提交内容)'
+git remote add origin 'https://github.com/xxx(远程仓库url)'
+git push origin master
+```
+
+此时已将代码提交至github上
+
+##### 2.4 在github上部署
+
+找到远程仓库里的Settings的Pages，设置Build and deployment：
+
+1. Source里选择Deploy from a branch
+2. Branch里选择master/docs
+3. 点击save
+
+操作如图：
+
+![](/githubPages/githubDeployment.png)
+
+
+
+#### 方法二步骤：
+
+##### 3.1 打包
+
+（同2.2的步骤）
+
+在dos命令窗口输入：
+
+```
+npm run build 
+```
+
+**或者**npm脚本工具里点击build：
+
+![](/githubPages/build.png)
+
+##### 3.2 将新分支上传到github
+
+```
+git init
+git add .
+git commit -m '(简述提交内容)'
+git remote add origin 'https://github.com/xxx(远程仓库url)'
+//先上传主分支master
+git push origin master
+
+//新建分支并切换
+git checkout -b gh-pages
+git rm -r .
+git cp dist
+git add .
+git commit -m '(简述提交内容)'
+git push origin gh-pages
+```
+
+tip：<u>为了避免“git rm -r .”删除分支内容，意外影响其他分支，应该在清空操作之前，保证其他分支已提交（commit）</u>
+
+此时已将master和gh-pages的代码都已提交至github上
+
+##### 3.4 在github上部署
+
+（与2.4类似）
+
+找到远程仓库里的Settings的Pages，设置Build and deployment：
+
+1. Source里选择Deploy from a branch
+2. Branch里选择gh-pages/(root)
+3. 点击save
+
+操作如图：
+
+![](/githubPages/gh-pages.png)
+
+
+
+#### tip
+
+搞定！收工！此时只需要等待几分钟，网页site就能访问了
+
+![](/githubPages/site.png)
