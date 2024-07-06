@@ -1,3 +1,7 @@
+---
+typora-root-url: ..\img
+---
+
 # vue3个人博客静态页面搭建
 
 ## 1 项目初始化
@@ -32,7 +36,7 @@ pnpm -v
 pnpm create vite
 ```
 
-
+![](/vue3build/1-1createProject.png)
 
 
 
@@ -59,6 +63,10 @@ ESLint最初是由[Nicholas C. Zakas](http://nczonline.net/) 于2013年6月创�
 ```
 pnpm i eslint -D
 ```
+
+![](/vue3build/1-3eslintInstall.png)
+
+
 
 #### 2 生成配置文件:.eslint.cjs
 
@@ -476,11 +484,15 @@ GitHub Pages 需要你指定一个基础路径，这个路径通常是你的 Git
 
 ```
 export default defineConfig({
-  base: '/your-repo-name/', // 替换为你的 GitHub 仓库名
+    if (command === 'build') {
+        return {
+        	base:'/your-repo-name/'
+        }
+	}
 });
 ```
 
-配置后，会遇到一些问题：
+配置后，会遇到一些问题：public里的静态文件不会跟随打包，会找不到路径，所以尽量把那些需要解析的文件放到src/assets下
 
 
 

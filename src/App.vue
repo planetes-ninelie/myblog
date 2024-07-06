@@ -6,11 +6,10 @@ console.log(import.meta.env);
 <template>
   <div>
     <h1>test</h1>
-    <img src="/img/githubPages/gh-pages.png" alt="" style="width: 300px;" />
-    <svg-icon name="phone"></svg-icon>
-    <svg>
-      <use xlink-href="#icon-phone"></use>
-    </svg>
+    <img src="@/assets/img/vue3build/1-1createProject.png" alt="" style="width: 400px;" />
+    <div>
+      <svg-icon name="phone"></svg-icon>
+    </div>
   </div>
 </template>
 
