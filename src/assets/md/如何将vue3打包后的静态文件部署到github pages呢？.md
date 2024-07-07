@@ -185,7 +185,7 @@ git push origin master
 //新建分支并切换
 git checkout -b gh-pages
 git rm -r .
-git cp dist
+cp -r dist/* .
 git add .
 git commit -m '(简述提交内容)'
 git push origin gh-pages
