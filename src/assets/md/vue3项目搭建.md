@@ -817,7 +817,7 @@ export default defineConfig(({ command, mode }) => {
       }),
     ],
     //修改公共路径
-    base: '/myblog/',
+    base: `${env.VITE_APP_BASE_API}/`,
     resolve: {
       alias: {
         '@': path.resolve('./src'), // 相对路径别名配置，使用 @ 代替 src
@@ -912,3 +912,115 @@ export default [
     }
 ]
 ```
+
+### 2.7 axios二次封装
+
+在开发项目的时候避免不了与后端进行交互,因此我们需要使用axios插件实现发送网络请求。在开发项目的时候
+
+我们经常会把axios进行二次封装。
+
+**安装axios：**
+
+```
+pnpm install axios
+```
+
+目的:
+
+1:使用请求拦截器，可以在请求拦截器中处理一些业务(开始进度条、请求头携带公共参数)
+
+2:使用响应拦截器，可以在响应拦截器中处理一些业务(进度条结束、简化服务器返回的数据、处理http网络错误)
+
+在根目录下创建utils/request.ts
+
+```
+import axios from "axios";
+import { ElMessage } from "element-plus";
+//创建axios实例
+let request = axios.create({
+    baseURL: import.meta.env.VITE_APP_BASE_API,
+    timeout: 5000
+})
+//请求拦截器
+request.interceptors.request.use(config => {
+    return config;
+});
+//响应拦截器
+request.interceptors.response.use((response) => {
+    return response.data;
+}, (error) => {
+    //处理网络错误
+    let msg = '';
+    let status = error.response.status;
+    switch (status) {
+        case 401:
+            msg = "token过期";
+            break;
+        case 403:
+            msg = '无权访问';
+            break;
+        case 404:
+            msg = "请求地址错误";
+            break;
+        case 500:
+            msg = "服务器出现问题";
+            break;
+        default:
+            msg = "无网络";
+
+    }
+    ElMessage({
+        type: 'error',
+        message: msg
+    })
+    return Promise.reject(error);
+});
+export default request;
+```
+
+### 2.8 API接口统一管理
+
+在开发项目的时候,接口可能很多需要统一管理。在src目录下去创建api文件夹去统一管理项目的接口；
+
+比如:下面方式
+
+```
+//统一管理咱们项目用户相关的接口
+
+import request from '@/utils/request'
+
+import type {
+
+ loginFormData,
+
+ loginResponseData,
+
+ userInfoReponseData,
+
+} from './type'
+
+//项目用户相关的请求地址
+
+enum API {
+
+ LOGIN_URL = '/admin/acl/index/login',
+
+ USERINFO_URL = '/admin/acl/index/info',
+
+ LOGOUT_URL = '/admin/acl/index/logout',
+
+}
+//登录接口
+export const reqLogin = (data: loginFormData) =>
+ request.post<any, loginResponseData>(API.LOGIN_URL, data)
+//获取用户信息
+
+export const reqUserInfo = () =>
+
+request.get<any, userInfoReponseData>(API.USERINFO_URL)
+
+//退出登录
+
+export const reqLogout = () => request.post<any, any>(API.LOGOUT_URL)
+```
+

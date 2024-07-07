@@ -1,6 +1,14 @@
 <script setup lang="ts">
-console.log(import.meta.env);
-
+import {onMounted} from 'vue'
+import {reqLogin} from './api/user'
+onMounted(async () => {
+  let data = {
+    username: 'admin',
+    password: '111111'
+  }
+  let req = await reqLogin(data)
+  console.log(req);
+})
 </script>
 
 <template>

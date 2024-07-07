@@ -9,12 +9,14 @@ import 'virtual:svg-icons-register'
 //引入全局组件
 import globalComponent from './components/index'
 import '@/styles/index.scss'
+import { reqLogin } from './api/user'
 //获取应用实例对象
 const app = createApp(App)
 //安装element-plus插件
 app.use(ElementPlus, {
   locale: zhCn,
 })
+
 //安装全局组件
 app.use(globalComponent)
 //将应用挂载到挂载点上
