@@ -63,6 +63,8 @@ export default defineConfig(({ command, mode }) => {
 
 - **其二：在github上新建分支，将静态文件部署到新分支的根目录下**
 
+- **其三：利用vite构建工具快速部署（推荐！！！）**
+
 
 
 #### 方法一步骤：
@@ -211,8 +213,39 @@ tip：<u>为了避免“git rm -r .”删除分支内容，意外影响其他分
 
 
 
+#### **方法三步骤**：
+
+##### 4.1 在`package.json`文件中添加以下脚本：
+
+```
+"scripts": {
+  "deploy": "gh-pages -d dist"
+}
+```
+
+##### 4.2  安装gh-pages
+
+你可以运行`npm run deploy`来将你的构建文件推送到gh-pages分支。但是，你需要先安装gh-pages包：
+
+```
+npm install --save-dev gh-pages
+```
+
+##### 4.3 设置 `.gitignore`文件
+
+在`.gitignore`文件中，确保没有忽略`dist`目录，因为我们需要将构建的文件提交到GitHub。
+
+##### 4.4 运行`npm run deploy`
+
+最后，运行`npm run deploy`，它将自动将`dist`目录下的文件推送到gh-pages分支。
+
+
+
 #### tip
 
 搞定！收工！此时只需要等待几分钟，网页site就能访问了
 
 ![](/githubPages/site.png)
+
+
+
