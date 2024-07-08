@@ -3,6 +3,8 @@
 </template>
 
 <script setup lang="ts">
+import { reqLogin } from '../../api/user';
+console.log(reqLogin({username:'admin',password:'111111'}));
 
 </script>
 

@@ -6,7 +6,7 @@ function createUserList() {
       avatar:
         'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
       username: 'admin',
-      password: '111111',
+      password: '123456',
       desc: '平台管理员',
       roles: ['平台管理员'],
       buttons: ['cuser.detail'],
@@ -31,7 +31,7 @@ function createUserList() {
 export default [
   // 用户登录接口
   {
-    url: '/myblog/user/login', //请求地址
+    url: '/api/user/login', //请求地址
     method: 'post', //请求方式
     response: ({ body }) => {
       //获取请求体携带过来的用户名与密码
@@ -51,7 +51,7 @@ export default [
   },
   // 获取用户信息
   {
-    url: '/myblog/user/info',
+    url: '/api/user/info',
     method: 'get',
     response: (request) => {
       //获取请求头携带token

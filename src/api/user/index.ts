@@ -1,5 +1,5 @@
 //引入封装后axios的实例
-import request from '../../utils/request'
+import request from '@/utils/request'
 //统一管理接口
 enum API {
   LOGIN_URL = '/user/login',
