@@ -20,12 +20,12 @@ app.use(
   })
 );
 
-app.use(
-  createProxyMiddleware({
-    target: 'https://mock.mengxuegu.com/mock/668ccdf6088ab0640457d1f2/',
-    changeOrigin: true
-  })
-);
+// app.use(
+//   createProxyMiddleware({
+//     target: 'https://mock.mengxuegu.com/mock/668ccdf6088ab0640457d1f2/',
+//     changeOrigin: true
+//   })
+// );
 
 
 

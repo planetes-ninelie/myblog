@@ -1,9 +1,10 @@
 //引入axios
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+
 //利用axios创建request实例
 let request = axios.create({
-  baseURL: `${import.meta.env.VITE_APP_BASE_API}`,
+  baseURL: `${import.meta.env.VITE_SERVE}${import.meta.env.VITE_APP_BASE_API}`,
   timeout: 5000,
 })
 //添加请求与拦截器
