@@ -21,3 +21,19 @@ tip：下载Watt Toolkit加速
 图床设置 -> Github -> Github设置按照给的格式
 
 **6 最后将需要上传的图片拖入picgo即可**
+
+
+
+## **tip：如何在github上创建一个与master无关联的分支用于存放图片？**
+
+1 打开存放图片或md文件资源的文件夹
+
+2 `git init`初始化本地仓库
+
+3 `git add .`
+
+4 `git commit -m '(提交简述)'`
+
+5 `git remote add origin 'https:xxx.git'`
+
+6 `git push -u origin '(新的远程仓库分支名)'`
