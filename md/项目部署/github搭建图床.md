@@ -1,8 +1,12 @@
 # github搭建图床
 
-tip：下载Watt Toolkit加速
+tip：下载Watt Toolkit加速（会出现问题，因为这个搞了一小时，关掉即可）
 
 参考资料：[如何搭建自己的图床(GitHub版)-CSDN博客](https://blog.csdn.net/qq_44231797/article/details/131658184)
+
+[配置手册 | PicGo](https://picgo.github.io/PicGo-Doc/zh/guide/config.html#github图床)
+
+[picgo图床报错“unable to verify the first certificate“-CSDN博客](https://blog.csdn.net/weixin_51189637/article/details/130031891?ops_request_misc=%7B%22request%5Fid%22%3A%22172068862516800188588108%22%2C%22scm%22%3A%2220140713.130102334.pc%5Fall.%22%7D&request_id=172068862516800188588108&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-2-130031891-null-null.142^v100^pc_search_result_base4&utm_term=Error%3A unable to verify the first certificateat TLSSocket.onConnectSecure(node%3A tls wrap%3A1530%3A34)at TLSSocket.emit (node%3Aevents%3A394%3A28)&spm=1018.2226.3001.4187)
 
 **1 创建github仓库**
 

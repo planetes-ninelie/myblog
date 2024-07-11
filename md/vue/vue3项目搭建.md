@@ -36,7 +36,7 @@ pnpm -v
 pnpm create vite
 ```
 
-![](/vue3build/1-1createProject.png)
+![](https://fastly.jsdelivr.net/gh/planetes-ninelie/assets/1-1createProject.png)
 
 
 
@@ -64,7 +64,7 @@ ESLint最初是由[Nicholas C. Zakas](http://nczonline.net/) 于2013年6月创�
 pnpm i eslint -D
 ```
 
-![](/vue3build/1-3eslintInstall.png)
+![](https://fastly.jsdelivr.net/gh/planetes-ninelie/assets/1-3eslintInstall.png)
 
 
 

@@ -126,7 +126,7 @@ npm run build
 
 **或者**npm脚本工具里点击build：
 
-![](/githubPages/build.png)
+![build](https://fastly.jsdelivr.net/gh/planetes-ninelie/assets/build.png)
 
 ##### 2.3 上传到github
 
@@ -154,9 +154,7 @@ git push origin master
 
 操作如图：
 
-![](/githubPages/githubDeployment.png)
-
-
+![](https://fastly.jsdelivr.net/gh/planetes-ninelie/assets/githubDeployment.png)
 
 #### 方法二步骤：
 
@@ -172,7 +170,7 @@ npm run build
 
 **或者**npm脚本工具里点击build：
 
-![](/githubPages/build.png)
+![build](https://fastly.jsdelivr.net/gh/planetes-ninelie/assets/build.png)
 
 ##### 3.2 将新分支上传到github
 
@@ -209,7 +207,7 @@ tip：<u>为了避免“git rm -r .”删除分支内容，意外影响其他分
 
 操作如图：
 
-![](/githubPages/gh-pages.png)
+![](https://fastly.jsdelivr.net/gh/planetes-ninelie/assets/gh-pages.png)
 
 
 
@@ -245,7 +243,7 @@ npm install --save-dev gh-pages
 
 搞定！收工！此时只需要等待几分钟，网页site就能访问了
 
-![](/githubPages/site.png)
+![](https://fastly.jsdelivr.net/gh/planetes-ninelie/assets/site.png)
 
 
 

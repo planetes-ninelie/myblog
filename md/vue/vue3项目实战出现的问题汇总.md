@@ -8,7 +8,7 @@ typora-root-url: ..\..\img
 
 **问题如下图：**
 
-![](/vue3build/issues/notFoundApp.png)
+![](https://fastly.jsdelivr.net/gh/planetes-ninelie/assets/notFoundApp.png)
 
 实际上路径是存在的，只是建议出现了问题
 
