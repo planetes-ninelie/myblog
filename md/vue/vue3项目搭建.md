@@ -1174,7 +1174,16 @@ export default userUseStore
 1 创建`layout/index.vue`页面
 
 ```
-
+<template>
+  <div class="layout_container">
+    <div class="top">
+      <top></top>
+    </div>
+    <div class="content">
+      <content></content>
+    </div>
+  </div>
+</template>
 ```
 
 2 设置全局css变量
