@@ -1,1 +1,15 @@
 //项目提供scss全局变量
+
+//顶部导航的高度
+$base-tabbar-height: 50px;
+//顶部导航背景色
+$base-tabbar-background-color: linear-gradient(to bottom, rgb(29, 48, 66) 40%, rgba(29, 48, 66, 0.7) 85%, rgba(29, 48, 66, 0));
+//文字颜色
+$base-text-color: azure;
+//文字颜色2
+$base-text-color2:rgb(29, 48, 66);
+
+//内容宽度
+$base-main-height:1200px;
+//内容背景色
+$base-main-bg-color:rgba(255,255,255,0.75)

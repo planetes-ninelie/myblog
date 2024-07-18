@@ -12,11 +12,19 @@ export const constantRoutes = [
     children: [
       {
         path: '/home',
-        component: () => import('@/views/home/index.vue'),
-        meta: {
-          title: '首页',
-          icon: 'HomeFilled',
-        },
+        component: () => import('@/views/home/index.vue')
+      },
+      {
+        path: '/frontEnd',
+        component: () => import('@/views/frontEnd/index.vue')
+      },
+      {
+        path: '/others',
+        component: () => import('@/views/others/index.vue')
+      },
+      {
+        path: '/about',
+        component: () => import('@/views/about/index.vue')
       },
     ],
   },

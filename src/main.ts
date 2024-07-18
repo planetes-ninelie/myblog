@@ -13,8 +13,15 @@ import '@/styles/index.scss'
 import router from './router'
 //引入store
 import pinia from './store'
+//引入el-cion
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
 //获取应用实例对象
 const app = createApp(App)
+//安装el-icon
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 //安装element-plus插件
 app.use(ElementPlus, {
   locale: zhCn,

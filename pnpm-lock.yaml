@@ -11,6 +11,9 @@ dependencies:
   axios:
     specifier: ^1.6.8
     version: 1.6.8
+  easy-typer-js:
+    specifier: 2.1.0
+    version: 2.1.0
   echarts:
     specifier: 5.5.0
     version: 5.5.0
@@ -2403,6 +2406,10 @@ packages:
     dependencies:
       is-obj: 2.0.0
     dev: true
+
+  /easy-typer-js@2.1.0:
+    resolution: {integrity: sha512-P1G1oPO26lPfuPdaS3KyywFc36HRVKBJvzxJiOMbn5+Z3n9JLzhTT4cJK121mnjujyOWQiRla4ikHZQHPcoa/g==}
+    dev: false
 
   /echarts-liquidfill@3.1.0(echarts@5.5.0):
     resolution: {integrity: sha512-5Dlqs/jTsdTUAsd+K5LPLLTgrbbNORUSBQyk8PSy1Mg2zgHDWm83FmvA4s0ooNepCJojFYRITTQ4GU1UUSKYLw==}

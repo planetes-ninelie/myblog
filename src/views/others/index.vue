@@ -1,0 +1,24 @@
+<template>
+  <div class="container">
+    <h1>在写了，在写了，别急</h1>
+  </div>
+
+</template>
+
+<script setup lang="ts">
+
+</script>
+
+<style lang="scss" scoped>
+.container {
+  background-color: $base-main-bg-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 665px;
+
+  h1 {
+    font-size: 50pt;
+  }
+}
+</style>
