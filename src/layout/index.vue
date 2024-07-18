@@ -17,8 +17,8 @@ import top from './top/index.vue'
 import content from './content/index.vue'
 let bg = ref()
 const backgrounds = [
-  '/public/img/background-image-4.png',
-  '/public/img/background-image-3.png'
+  'public/img/background-image-4.png',
+  'public/img/background-image-3.png'
 ]
 let currentBackground = ref('')
 onMounted(() => {
