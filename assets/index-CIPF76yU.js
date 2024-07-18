@@ -1,0 +1,1 @@
+import{_ as o,o as s,c,p as t,h as a,b as _}from"./index-BHeaFDKP.js";const d={},n=e=>(t("data-v-fe07f277"),e=e(),a(),e),p={class:"body"},r=n(()=>_("h1",null,"about",-1)),f=[r];function i(e,h){return s(),c("div",p,f)}const u=o(d,[["render",i],["__scopeId","data-v-fe07f277"]]);export{u as default};
