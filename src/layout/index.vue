@@ -7,6 +7,14 @@
       <content></content>
     </div>
   </div>
+  <!-- <div class="layout_container" :style="{ backgroundImage: `url(${require}(${currentBackground}))` }">
+    <div class="top">
+      <top ref="bg" @notify-parent="changeBg"></top>
+    </div>
+    <div class="content">
+      <content></content>
+    </div>
+  </div> -->
 </template>
 
 <script setup lang="ts">
@@ -15,11 +23,10 @@ import { reqPicture } from '../api/test';
 import { onMounted, watch } from 'vue'
 import top from './top/index.vue'
 import content from './content/index.vue'
+import bg1 from '../assets/img/background-image-3.png'
+import bg2 from '../assets/img/background-image-4.png'
 let bg = ref()
-const backgrounds = [
-  'public/img/background-image-4.png',
-  'public/img/background-image-3.png'
-]
+const backgrounds = [bg2, bg1]
 let currentBackground = ref('')
 onMounted(() => {
   changeBg()

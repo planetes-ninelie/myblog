@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="left">
-      <img :src="settings.logo" alt="" class="logo">
+      <img src="../../assets/img/avatar.jpg" alt="" class="logo">
       <text>{{ settings.title }}</text>
     </div>
     <div class="center">
