@@ -1,0 +1,1 @@
+import{_ as o,o as c,c as s,p as t,k as a,b as _}from"./index-CGebOsLq.js";const d={},n=e=>(t("data-v-d4781b50"),e=e(),a(),e),r={class:"container"},p=n(()=>_("h1",null,"在写了，在写了，别急",-1)),i=[p];function h(e,l){return c(),s("div",r,i)}const u=o(d,[["render",h],["__scopeId","data-v-d4781b50"]]);export{u as default};
