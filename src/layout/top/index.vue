@@ -87,7 +87,7 @@ defineExpose({ bgId })
 <style lang="scss" scoped>
 .container {
   display: flex;
-  height: 100%;
+  height: 50px;
 
   .left {
     flex: 1;
@@ -106,7 +106,7 @@ defineExpose({ bgId })
 
     .el-menu-demo {
       margin-left: 15%;
-      height: 95%;
+      height: 40px;
       background: $base-tabbar-background-color;
 
       .svg-icon {
