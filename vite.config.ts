@@ -22,7 +22,7 @@ export default defineConfig(({ command, mode }) => {
       }),
     ],
     //修改公共路径
-    base: `${env.VITE_APP_BASE_PATH}/`,
+    // base: `${env.VITE_APP_BASE_PATH}/`,
     resolve: {
       alias: {
         '@': path.resolve('./src'), // 相对路径别名配置，使用 @ 代替 src

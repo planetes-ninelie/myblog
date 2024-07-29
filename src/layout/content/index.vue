@@ -13,5 +13,6 @@
 .body {
   margin: 0 auto;
   width: $base-main-height;
+  height: 100%;
 }
 </style>
