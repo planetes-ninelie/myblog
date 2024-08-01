@@ -1,0 +1,1 @@
+import{_ as o,o as s,c,p as t,l as a,e as d}from"./index-DaiYPwGy.js";const _={},n=e=>(t("data-v-b3dbb400"),e=e(),a(),e),p={class:"body"},r=n(()=>d("h1",null,"about",-1)),i=[r];function b(e,l){return s(),c("div",p,i)}const f=o(_,[["render",b],["__scopeId","data-v-b3dbb400"]]);export{f as default};

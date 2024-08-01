@@ -11,8 +11,8 @@
 
 <style lang="scss" scoped>
 .body {
-  margin: 0 auto;
   width: $base-main-height;
   height: 100%;
+  margin: 0 auto;
 }
 </style>

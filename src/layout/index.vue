@@ -7,7 +7,7 @@
       <content></content>
     </div>
   </div>
-  <!-- <div class="layout_container" :style="{ backgroundImage: `url(${require}(${currentBackground}))` }">
+  <!-- <div class="layout_container">
     <div class="top">
       <top ref="bg" @notify-parent="changeBg"></top>
     </div>
@@ -33,7 +33,6 @@ onMounted(() => {
 })
 
 const changeBg = (data) => {
-
   currentBackground.value = backgrounds[bg.value.bgId]
 }
 
@@ -41,6 +40,7 @@ const changeBg = (data) => {
 
 <style lang="scss" scoped>
 .layout_container {
+  // background-image: url('../assets/img/background-image-3.png');
   background-position: center;
   background-repeat: repeat;
   background-attachment: fixed;
@@ -48,6 +48,7 @@ const changeBg = (data) => {
   background-clip: border-box;
   background-size: cover;
   bottom: 0;
+  // height: 100%;
 
   .top {
     position: fixed;
@@ -61,5 +62,27 @@ const changeBg = (data) => {
   .content {
     padding-top: $base-tabbar-height;
   }
+
+  .menu {
+    position: fixed;
+    z-index: 99;
+    left: 20px;
+    bottom: 100px;
+    top: 150px;
+    width: 150px;
+    height: 200px;
+    background-color: gray;
+  }
+
+  .navigationBar {
+    position: fixed;
+    z-index: 99;
+    right: 20px;
+    bottom: 100px;
+    width: 100px;
+    height: 200px;
+    background-color: gray;
+  }
+
 }
 </style>

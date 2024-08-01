@@ -9,7 +9,7 @@ $base-text-color: azure;
 //文字颜色2
 $base-text-color2:rgb(29, 48, 66);
 
-//内容宽度
-$base-main-height:1200px;
+//内容高度
+$base-main-height:calc(100vh - $base-tabbar-height);
 //内容背景色
 $base-main-bg-color:rgba(255,255,255,0.75)

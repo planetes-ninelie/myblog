@@ -46,7 +46,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .box {
   width: 100vw;
-  height: 650px;
+  height: 100vh;
 
   .top {
     display: flex;

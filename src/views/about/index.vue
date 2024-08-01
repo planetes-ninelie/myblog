@@ -11,7 +11,7 @@
 
 <style lang="scss" scoped>
 .body {
-  height: 640px;
+  height: $base-main-height;
 }
 </style>
 

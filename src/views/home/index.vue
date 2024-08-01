@@ -22,6 +22,7 @@ const lines = [
 <style lang="scss" scoped>
 .body {
   width: 100%;
+  height: $base-main-height;
 
   .top {
     margin: 0 150px;

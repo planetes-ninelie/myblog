@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 665px;
+  height: $base-main-height;
 
   h1 {
     font-size: 50pt;

@@ -5,46 +5,9 @@
       <text>{{ settings.title }}</text>
     </div>
     <div class="center">
-      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" text-color="grey"
+      <el-menu :default-active="$route.path" class="el-menu-demo" mode="horizontal" text-color="grey"
         background-color="rgb(29, 48, 66)" active-text-color="azure" :popper-offset="0">
-        <el-menu-item index="/" @click="goRoute">
-          <el-icon>
-            <House />
-          </el-icon>首页
-        </el-menu-item>
-        <el-sub-menu index="/frontEnd">
-          <template #title>
-            <el-icon>
-              <Notebook />
-            </el-icon>前端学习
-          </template>
-          <el-menu-item index="/frontEnd" @click="goRoute">测试html</el-menu-item>
-          <!-- <el-menu-item index="/frontEnd" @click="goRoute">item one</el-menu-item>
-          <el-menu-item index="2-2">item two</el-menu-item>
-          <el-menu-item index="2-3">item three</el-menu-item>
-          <el-sub-menu index="2-4">
-            <template #title>item four</template>
-            <el-menu-item index="2-4-1" @click="goRoute">item one</el-menu-item>
-            <el-menu-item index="2-4-2">item two</el-menu-item>
-            <el-menu-item index="2-4-3">item three</el-menu-item>
-          </el-sub-menu> -->
-        </el-sub-menu>
-        <el-menu-item index="/others" @click="goRoute">
-          <el-icon>
-            <Picture />
-          </el-icon>其他
-        </el-menu-item>
-        <!-- <el-sub-menu index="/other">
-          <template #title>其他</template>
-          <el-menu-item index="3-1">item one</el-menu-item>
-          <el-menu-item index="3-2">item two</el-menu-item>
-          <el-menu-item index="3-3">item three</el-menu-item>
-        </el-sub-menu> -->
-        <el-menu-item index="/about" @click="goRoute">
-          <el-icon>
-            <User />
-          </el-icon>关于
-        </el-menu-item>
+        <center :menu-list="routes"></center>
       </el-menu>
     </div>
     <div class="right">
@@ -59,29 +22,28 @@
 
 <script setup lang="ts">
 import settings from '../../settings';
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import center from './center.vue';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { constantRoutes } from '@/router/routes.ts';
 
+//设置活动路由
 let $router = useRouter()
 
-const activeIndex = ref('/')
-//点击菜单的回调
-const goRoute = (vc: any) => {
-  $router.push(vc.index)
-  console.log(vc.index);
-}
+//处理背景图切换
 let bg = ref(true)
 let bgId = ref(1)
 const value2 = ref(true)
-
 const emit = defineEmits(['notify-parent']);
 const handleBg = (value) => {
   bgId.value = value ? 1 : 0
   emit('notify-parent', bgId.value);
 }
-
 defineExpose({ bgId })
 
+//获取常量路由
+const routes = constantRoutes[0].children
+console.log('routes', routes);
 </script>
 
 <style lang="scss" scoped>
@@ -113,12 +75,6 @@ defineExpose({ bgId })
         padding-right: 2px
       }
     }
-
-    .el-menu--horizontal,
-    .el-menu {
-      border-bottom: 0px;
-    }
-
   }
 
   .right {
