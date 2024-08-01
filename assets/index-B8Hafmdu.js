@@ -1,0 +1,1 @@
+import{_ as o,r as t,o as c,c as n,g as r}from"./index-DaiYPwGy.js";const s={},a={class:"container"};function _(d,i){const e=t("router-view");return c(),n("div",a,[r(e)])}const f=o(s,[["render",_],["__scopeId","data-v-47885abb"]]);export{f as default};
