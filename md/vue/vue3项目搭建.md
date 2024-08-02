@@ -1,7 +1,3 @@
----
-typora-root-url: ..\..\img
----
-
 # vue3个人博客静态页面搭建
 
 ## 1 项目初始化
@@ -64,17 +60,13 @@ ESLint最初是由[Nicholas C. Zakas](http://nczonline.net/) 于2013年6月创�
 pnpm i eslint -D
 ```
 
-![](https://fastly.jsdelivr.net/gh/planetes-ninelie/assets/1-3eslintInstall.png)
-
-
-
 #### 2 生成配置文件:.eslint.cjs
 
 ```
 npx eslint --init
 ```
 
-![](C:\Users\ilsdg\Desktop\vue_test\myBlog\public\src\1-3eslintInstall.png)
+![](https://fastly.jsdelivr.net/gh/planetes-ninelie/assets/1-3eslintInstall.png)
 
 #### 3 vue3环境代码校验插件
 
