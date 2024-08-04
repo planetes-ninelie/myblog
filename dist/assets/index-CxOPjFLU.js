@@ -1,0 +1,1 @@
+import{_ as c,r as t,o as s,c as a,g as n,p as r,l as _,e as d}from"./index-Dn9DMUYR.js";const p={},i=e=>(r("data-v-c42294c1"),e=e(),_(),e),l={class:"container"},u=i(()=>d("h2",null,"测试页面",-1));function f(e,h){const o=t("router-view");return s(),a("div",l,[u,n(o)])}const v=c(p,[["render",f],["__scopeId","data-v-c42294c1"]]);export{v as default};
