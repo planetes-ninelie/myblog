@@ -1,1 +1,0 @@
-import{_ as t,r as c,o as s,c as a,g as n,p as r,l as _,e as d}from"./index-NR-jAZ8C.js";const p={},i=e=>(r("data-v-f8d57415"),e=e(),_(),e),l={class:"container"},f=i(()=>d("div",null,"测试页面",-1));function u(e,v){const o=c("router-view");return s(),a("div",l,[f,n(o)])}const h=t(p,[["render",u],["__scopeId","data-v-f8d57415"]]);export{h as default};

@@ -1,1 +1,0 @@
-import{_ as o,o as c,c as s,p as t,l as a,e as _}from"./index-NR-jAZ8C.js";const n={},d=e=>(t("data-v-4540ee77"),e=e(),a(),e),r={class:"container"},p=d(()=>_("h1",null,"在写了，在写了，别急",-1)),i=[p];function l(e,h){return c(),s("div",r,i)}const u=o(n,[["render",l],["__scopeId","data-v-4540ee77"]]);export{u as default};
