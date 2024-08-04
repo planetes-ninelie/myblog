@@ -2,20 +2,21 @@
   <div>
     <!-- 顶部 -->
     <fieldset class="title">
-      <legend>修改管理员</legend>
+      <legend>{{ isAmend ? '修改管理员' : '新增管理员' }}</legend>
     </fieldset>
     <!-- 表单 -->
     <el-form :model="ruleForm" ref="ruleForm" :rules="rules" label-width="100px">
       <el-form-item label="账号" prop="username">
-        <el-input v-model="ruleForm.username" class="input" placeholder="管理员账号" disabled></el-input>
+        <el-input v-model="ruleForm.username" class="input" placeholder="管理员账号" :disabled="isAmend"></el-input>
+        <div class="must" v-if="!isAmend">必填</div>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="ruleForm.password" type="password" class="input"
-          placeholder="密码留空则不修改，密码需包含数字、字母、符号，且长度为6 - 20位"></el-input>
+        <el-input v-model="ruleForm.password" type="password" class="input" :placeholder="placeholder"></el-input>
+        <div class="must" v-if="!isAmend">必填</div>
       </el-form-item>
       <el-form-item label="确认密码" prop="checkPass">
-        <el-input v-model="ruleForm.checkPass" type="password" class="input"
-          placeholder="密码留空则不修改，密码需包含数字、字母、符号，且长度为6 - 20位"></el-input>
+        <el-input v-model="ruleForm.checkPass" type="password" class="input" :placeholder="placeholder"></el-input>
+        <div class="must" v-if="!isAmend">必填</div>
       </el-form-item>
       <el-form-item label="手机号码" prop="mobile">
         <el-input v-model="ruleForm.mobile" class="input" placeholder="管理员手机号码"></el-input>
@@ -49,7 +50,7 @@
         </el-switch>
       </el-form-item>
       <el-form-item>
-        <el-button type="info" @click="submitForm('ruleForm')">立即提交</el-button>
+        <el-button type="success" @click="submitForm('ruleForm')">立即提交</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -135,7 +136,11 @@ export default {
       //管理区域学校选项是否禁用
       enableRegion: true,
       //管理区域校区选项是否禁用
-      isBranch: true
+      isBranch: true,
+      //是否为修改
+      isAmend: true,
+      //密码输入框提示
+      placeholder: ''
     }
   },
 
@@ -144,7 +149,6 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(async (valid, invalidFields) => {
         if (valid) {
-          let msg = ''
           try {
             // 整理 ruleForm
             this.ruleForm.schoolDtoList = []
@@ -174,37 +178,47 @@ export default {
             })
             // 删除再次输入密码的变量
             delete this.ruleForm.checkPass
-            // 删除表单中的无效值
-            for (let key in this.ruleForm) {
-              if (this.ruleForm[key] === undefined || this.ruleForm[key] === null) {
-                delete this.ruleForm[key];
+            let response = {}
+            if (this.isAmend) {
+              // 删除表单中的无效值
+              for (let key in this.ruleForm) {
+                if (this.ruleForm[key] === undefined || this.ruleForm[key] === null) {
+                  delete this.ruleForm[key];
+                }
               }
+              // 使用 await 等待 HTTP 请求完成
+              response = await this.$http({
+                url: this.$http.adornUrl('admin/school/updateAdminSchool'),
+                method: 'post',
+                data: this.ruleForm
+              });
+            } else {
+              // 使用 await 等待 HTTP 请求完成
+              response = await this.$http({
+                url: this.$http.adornUrl('admin/school/saveAdminSchool'),
+                method: 'post',
+                data: this.ruleForm
+              });
             }
-            // 使用 await 等待 HTTP 请求完成
-            const response = await this.$http({
-              url: this.$http.adornUrl('admin/school/updateAdminSchool'),
-              method: 'post',
-              data: this.ruleForm
-            });
-            console.log('response', response);
             if (response.data.code === 500) {
-              msg = response.data.msg;
+              let msg = response.data.msg;
+              console.log('msg', msg);
               throw new Error(msg)
             }
             // 处理响应数据
             this.$message({
-              message: '修改成功',
+              message: `${this.isAmend ? '修改成功' : '新增成功'}`,
               type: 'success',
               duration: 1500,
             });
             this.reset()
-            this.$router.push('/schoolAdmin')
+            this.$router.push('/frontEnd/testPages/schoolAdmin')
           } catch (error) {
             // 处理可能发生的错误
-            console.error('请求数据失败:', msg);
+            console.error('请求数据失败:', error.message);
             // 错误通知
-            this.$message.error(`${msg || error}`);
-            this.$router.push('/schoolAdmin')
+            this.$message.error(`${error.message || error}`);
+            this.$router.push('/frontEnd/testPages//schoolAdmin')
           }
         } else {
           // 从 invalidFields 中获取错误信息
@@ -219,6 +233,16 @@ export default {
           this.$message.error(errorMessage.trim());
           return false;
         }
+      })
+    },
+
+    //获取登陆的信息
+    getUserInfo() {
+      this.$http({
+        url: this.$http.adornUrl(`/sys/user/info`),
+        method: 'get'
+      }).then(res => {
+        this.ruleForm.roleType = res.data.user.userType
       })
     },
 
@@ -362,7 +386,23 @@ export default {
           element.isIndeterminate = false
           element.campusIdList = []
         })
-    }
+    },
+
+    //处理路由变化
+    async handleRouteChange() {
+      this.reset();
+      await this.getSchoolList();
+      this.placeholder = '密码需包含数字、字母、符号，且长度为6 - 20位';
+
+      if (this.$route.query.userId) {
+        await this.getAdminSchool(this.$route.query.userId);
+        this.placeholder = '密码留空则不修改，' + this.placeholder;
+        this.isAmend = true;
+      } else {
+        this.isAmend = false;
+      }
+    },
+
   },
   //监视所属角色值的变化
   watch: {
@@ -395,23 +435,18 @@ export default {
 
   mounted() {
     this.getRoleList();
+    this.getUserInfo();
   },
 
   beforeRouteEnter(to, from, next) {
-    next(async (vm) => {
-      vm.reset();
-      await vm.getSchoolList();
-      vm.getAdminSchool(vm.$route.query.userId)
+    next(vm => {
+      vm.handleRouteChange();
     });
   },
 
-  async beforeRouteUpdate(to, from, next) {
-    // 在当前路由改变，但是该组件被复用时调用
-    this.reset();
-    await this.getSchoolList();
-    this.getAdminSchool(this.$route.query.userId)
-    next();
-  }
+  beforeRouteUpdate(to, from, next) {
+    this.handleRouteChange().then(() => next());
+  },
 }
 </script>
 

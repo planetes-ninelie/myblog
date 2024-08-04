@@ -1,7 +1,8 @@
 <template>
   <div>
     <!-- 顶部添加按钮 -->
-    <el-button type="primary" icon="el-icon-circle-plus-outline" @click="$router.push('/schoolAdd')">添加管理员</el-button>
+    <el-button type="primary" icon="el-icon-circle-plus-outline"
+      @click="$router.push('/frontEnd/testPages/schoolAmend')" disabled>添加管理员</el-button>
     <!-- 搜素框 -->
     <div style="display: flex;justify-content: start;margin-top: 10px;">
       <el-input v-model="userNameForm" placeholder="账号" class="input"></el-input>
@@ -26,7 +27,8 @@
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="200">
         <template slot-scope="scope">
-          <el-button size="mini" type="primary" @click="$router.push(`/schoolAmend?userId=${scope.row.userId}`)">编辑
+          <el-button size="mini" type="primary"
+            @click="$router.push(`/frontEnd/testPages/schoolAmend?userId=${scope.row.userId}`)">编辑
           </el-button>
           <el-button size="mini" type="danger" @click="schoolDelete(scope.row)">
             删除
@@ -45,6 +47,7 @@
 </template>
 
 <script>
+import { reqPageSchoolAdmin } from '@/api/frontEnd/testPages/schoolAdmin/index.ts';
 export default {
   data() {
     return {
@@ -114,16 +117,13 @@ export default {
       try {
         this.tableDataLoading = true;
         // 使用 await 等待 HTTP 请求完成
-        const response = await this.$http({
-          url: this.$http.adornUrl('admin/school/pageAdminSchool'),
-          method: 'get',
-          params: this.$http.adornParams({
-            'page': this.currPage,
-            'limit': this.pageSize,
-            'userName': this.userNameForm,
-            'phone': this.phoneForm,
-          })
-        });
+        const response = await reqPageSchoolAdmin(
+          this.currPage,
+          this.pageSize,
+          this.userNameForm,
+          this.phoneForm,
+        );
+        console.log(response);
         if (response.data.code == 500) {
           throw new Error(response.data.msg)
         } else {
@@ -147,19 +147,20 @@ export default {
         this.$message.error(error.message || '加载数据失败，请检查网络或稍后重试');
       }
     },
-  },
-  mounted() {
-    this.schoolAdminSelect()
-  },
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.schoolAdminSelect();
-    });
-  },
-  beforeRouteUpdate(to, from, next) {
-    // 在当前路由改变，但是该组件被复用时调用
-    this.schoolAdminSelect();
-    next();
+
+    mounted() {
+      this.schoolAdminSelect()
+    },
+    beforeRouteEnter(to, from, next) {
+      next(vm => {
+        vm.schoolAdminSelect();
+      });
+    },
+    beforeRouteUpdate(to, from, next) {
+      // 在当前路由改变，但是该组件被复用时调用
+      this.schoolAdminSelect();
+      next();
+    }
   }
 };
 </script>

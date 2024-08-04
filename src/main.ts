@@ -15,8 +15,6 @@ import router from './router'
 import pinia from './store'
 //引入el-cion
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-//引入el消息提示
-import { ElMessage } from 'element-plus'
 
 //获取应用实例对象
 const app = createApp(App)
@@ -34,7 +32,5 @@ app.use(globalComponent)
 app.use(router)
 //安装仓库
 app.use(pinia)
-//安装el消息提示
-app.use(ElMessage)
 //将应用挂载到挂载点上
 app.mount('#app')

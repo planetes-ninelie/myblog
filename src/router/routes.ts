@@ -54,16 +54,6 @@ export const constantRoutes = [
                 component: () => import('@/views/frontEnd/testPages/schoolAdmin/index.vue')
               },
               {
-                path: '/frontEnd/testPages/schoolAdd',
-                name: 'schoolAdd',
-                meta: {
-                  title: '添加学校管理员',
-                  icon: '',
-                  isMenu: false
-                },
-                component: () => import('@/views/frontEnd/testPages/schoolAdmin/schoolAdd.vue')
-              },
-              {
                 path: '/frontEnd/testPages/schoolAmend',
                 name: 'schoolAmend',
                 meta: {

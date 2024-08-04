@@ -4,7 +4,9 @@
   <div v-else class="mdEditor">
     <el-card v-for="type in MdType" class="card" shadow="always">
       <template #header>
-        {{ type }}
+        <div class="type">
+          {{ type }}
+        </div>
       </template>
       <div v-for="item in data">
         <div v-if="item.type == type" class="title" @click="selectMd(item.title)">
@@ -14,7 +16,7 @@
     </el-card>
   </div>
   <div class="navigationBar">
-    <navigationBar :isMd="isMd" @isMdChild="goBack"></navigationBar>
+    <navigationBar :isMd="isMd" @isMdChild="goBack" class="navigationBar-content"></navigationBar>
   </div>
   <div class="menu">
     <menuNav></menuNav>
@@ -123,6 +125,11 @@ const goBack = (val) => {
     margin: 0 40px;
     background-color: rgba(255, 255, 255, 0.7);
 
+    .type {
+      font-size: large;
+      font-weight: bold;
+    }
+
     .title {
       height: 30px;
       line-height: 30px;
@@ -154,6 +161,13 @@ const goBack = (val) => {
   bottom: 100px;
   width: 150px;
   height: 200px;
-  background-color: gray;
+  background-color: $base-main-bg-color;
+  border-radius: 10px;
+
+  .navigationBar-content {
+    height: 100%;
+    width: 100%;
+    background-color: $base-tabbar-background-color;
+  }
 }
 </style>

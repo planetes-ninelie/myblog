@@ -1,19 +1,20 @@
 <template>
-  <!-- <div @click="goBack">返回列表</div>
-  <div>{{ isMd }}</div> -->
+  <el-button @click="goBack" class="button" type="success">返回列表</el-button>
 </template>
 
 <script setup lang="ts">
 import { defineEmits } from 'vue'
+import { ElMessage } from 'element-plus'
 // 使用defineEmits创建名称，接受一个数组
 const emit = defineEmits(['isMdChild'])
 
-defineProps({
-  isMd: String
+//接收父组件的值
+const fatherParams = defineProps({
+  isMd: Boolean
 });
 
 const goBack = () => {
-  if (isMd == 'true') {
+  if (fatherParams.isMd) {
     //传递给父组件
     emit('isMdChild', false)
   } else {
@@ -28,8 +29,8 @@ const goBack = () => {
 </script>
 
 <style lang="scss" scoped>
-div {
-  color: white;
+button {
+
 
   &:hover {
     cursor: pointer;
