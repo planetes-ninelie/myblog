@@ -1,0 +1,1 @@
+import{_ as c,o,c as s,p as t,l as a,e as _}from"./index-DaiYPwGy.js";const n={},d=e=>(t("data-v-1ea3e7c3"),e=e(),a(),e),r={class:"container"},p=d(()=>_("h1",null,"在写了，在写了，别急",-1)),i=[p];function l(e,h){return o(),s("div",r,i)}const u=c(n,[["render",l],["__scopeId","data-v-1ea3e7c3"]]);export{u as default};
