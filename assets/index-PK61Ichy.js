@@ -1,0 +1,1 @@
+import{_ as o,o as s,c,p as t,l as a,e as _}from"./index-BaDFzhGW.js";const d={},n=e=>(t("data-v-2653f3b8"),e=e(),a(),e),p={class:"body"},r=n(()=>_("div",null,"about",-1)),i=[r];function f(e,l){return s(),c("div",p,i)}const u=o(d,[["render",f],["__scopeId","data-v-2653f3b8"]]);export{u as default};
