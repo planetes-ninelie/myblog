@@ -1,84 +1,93 @@
 <template>
   <div class="body">
     <div class="top">
-      <p v-for="(line, index) in lines" :key="index" class="animation">
-        <span class="masked-text">{{ line }}</span>
-      </p>
+      <div v-for="(line, index) in lines" :key="index" class="lines">
+        <span class="animation" :style="{
+          '--animation-delay': `${index * 2}s`,
+          '--after-delay': `${index * 2}s`
+        }">
+          {{ line }}&nbsp;
+        </span>
+      </div>
     </div>
-    <!-- <div class="container">
-      内容
-    </div> -->
   </div>
 </template>
 
 <script setup lang="ts">
-const lines = [
+import { ref } from 'vue';
+
+// 定义响应式数据
+const lines = ref([
   '那天 流星划过天际 那就像',
-  '就像 梦一样的景色',
-  '只知道 景色好美'
-];
+  '就像 梦里的景色',
+  '只知道 天空好美'
+]);
 </script>
 
 <style lang="scss" scoped>
 .body {
-  width: 100%;
   height: $base-main-height;
 
   .top {
-    // margin: 0 150px;
     height: 500px;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     color: $base-text-color;
     font-size: 50px;
 
-    p {
-      white-space: nowrap;
-      position: relative;
-      /* 添加相对定位，以便于放置伪元素 */
-      overflow: hidden;
-      /* 隐藏超出容器的内容 */
+    .lines {
+      display: flex;
+      justify-content: center;
 
-      &:after {
-        /* 创建光标 */
-        content: '|';
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        margin: auto 0;
-        animation: blink 500ms steps(1, end) infinite;
+      .animation {
+        position: relative;
+        overflow: hidden;
+        width: 0;
+        padding: 30px 0;
+        margin: 0 auto;
+        font-size: 40px;
+        line-height: 45px;
+        white-space: nowrap;
+        animation-delay: var(--animation-delay) !important;
+        animation: width 2s steps(15) forwards;
+
+        &::after {
+          content: "";
+          position: absolute;
+          right: 0px;
+          height: 45px;
+          border-right: 2px solid #ffffff;
+          animation-delay: var(--after-delay) !important;
+          animation: showInfinite 1s 2 both;
+
+          @keyframes showInfinite {
+
+            0%,
+            50% {
+              opacity: 1;
+            }
+
+            100% {
+              opacity: 0;
+            }
+          }
+        }
+
+        @keyframes width {
+          0% {
+            width: 0;
+          }
+
+          100% {
+            width: 100%;
+          }
+        }
       }
-    }
 
-    .animation {
-      animation: grow 4s linear forwards,
-        /* 使用线性插值函数 */
-        blink 500ms steps(1, end) infinite;
-
-      @keyframes grow {
-        from {
-          width: 0;
-        }
-
-        to {
-          width: 100%;
-        }
-      }
-
-      @keyframes blink {
-
-        from,
-        to {
-          border-right-color: transparent;
-        }
-
-        50% {
-          border-right-color: #eee;
-        }
+      &:last-child .animation::after {
+        animation: showInfinite 1s infinite both;
       }
     }
   }

@@ -97,7 +97,7 @@ export const data = [
 //利用axios创建getHtml实例
 let getHtml = axios.create({
   baseURL: `${import.meta.env.VITE_HTML_URL}`,
-  timeout: 8000
+  timeout: 5000
 })
 
 export const requestHtml = (name: any) => {

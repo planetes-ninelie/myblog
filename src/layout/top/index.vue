@@ -34,15 +34,12 @@ let $router = useRouter()
 
 //处理背景图切换
 let bg = ref(true)
-let bgId = ref(1)
-const value2 = ref(true)
 const emit = defineEmits(['notify-parent']);
 const handleBg = (value) => {
-  bgId.value = value ? 1 : 0
-  emit('notify-parent', bgId.value);
+  emit('notify-parent', bg.value);
 }
-defineExpose({ bgId })
 
+const value2 = ref(true)
 //获取常量路由
 const routes = constantRoutes[0].children
 console.log('routes', routes);

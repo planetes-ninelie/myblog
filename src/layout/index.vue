@@ -1,52 +1,38 @@
 <template>
-  <div class="layout_container" :style="{ backgroundImage: `url(${currentBackground})` }">
+  <div class="layout_container" :class="background">
     <div class="top">
-      <top ref="bg" @notify-parent="changeBg"></top>
+      <top @notify-parent="changeBg"></top>
     </div>
     <div class="content">
       <content></content>
     </div>
   </div>
-  <!-- <div class="layout_container">
-    <div class="top">
-      <top ref="bg" @notify-parent="changeBg"></top>
-    </div>
-    <div class="content">
-      <content></content>
-    </div>
-  </div> -->
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
 import { reqPicture } from '../api/test';
-import { onMounted, watch } from 'vue'
+import { onMounted, watch, nextTick } from 'vue'
 import top from './top/index.vue'
 import content from './content/index.vue'
-import bg1 from '../assets/img/background-image-3.png'
-import bg2 from '../assets/img/background-image-4.png'
-let bg = ref()
-const backgrounds = [bg2, bg1]
-let currentBackground = ref('')
+//引入el加载组件
+import { ElLoading } from 'element-plus';
+
+const background = ref('bg1')
 onMounted(() => {
   changeBg()
 })
 
-const changeBg = (data) => {
-  currentBackground.value = backgrounds[bg.value.bgId]
+const changeBg = (bg = true) => {
+  background.value = bg ? 'bg1' : 'bg2'
 }
 
 </script>
 
 <style lang="scss" scoped>
 .layout_container {
-  background-position: center;
-  background-repeat: repeat;
-  background-attachment: fixed;
-  background-color: transparent;
-  background-clip: border-box;
-  background-size: cover;
   bottom: 0;
+  z-index: 99;
 
   .top {
     position: fixed;
@@ -84,5 +70,13 @@ const changeBg = (data) => {
     height: 200px;
     background-color: gray;
   }
+}
+
+.bg1 {
+  background: url('../assets/img/background-image-3.png') center / cover no-repeat fixed;
+}
+
+.bg2 {
+  background: url('../assets/img/background-image-4.png') center / cover no-repeat fixed;
 }
 </style>

@@ -48,23 +48,21 @@ let isMd = ref<boolean>(false)
 let MdType = ref<[]>([])
 
 // onMounted(() => getResource())
-onMounted(
-  () => getMdType()
-)
+onMounted(() => getMdType())
 
 //获取html页面
-const getResource = async () => {
-  let options = {
-    fullscreen: true
-  }
-  const loadingInstance = ElLoading.service(options)
-  let title = data[0].title
-  let result = await requestHtml(title)
-  content.value = result.data
-  nextTick(() => {
-    loadingInstance.close()
-  })
-}
+// const getResource = async () => {
+//   let options = {
+//     fullscreen: true
+//   }
+//   const loadingInstance = ElLoading.service(options)
+//   let title = data[0].title
+//   let result = await requestHtml(title)
+//   content.value = result.data
+//   nextTick(() => {
+//     loadingInstance.close()
+//   })
+// }
 
 //获取md文件
 const selectMd = async (title) => {
