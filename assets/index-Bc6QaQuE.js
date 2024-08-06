@@ -1,0 +1,1 @@
+import{_ as o,o as c,c as s,p as t,l as a,e as _}from"./index-x_ALk9kT.js";const n={},d=e=>(t("data-v-b3056458"),e=e(),a(),e),r={class:"container"},p=d(()=>_("h1",null,"在写了，在写了，别急",-1)),i=[p];function l(e,h){return c(),s("div",r,i)}const u=o(n,[["render",l],["__scopeId","data-v-b3056458"]]);export{u as default};

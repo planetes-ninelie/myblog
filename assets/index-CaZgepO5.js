@@ -1,0 +1,1 @@
+import{_ as t,r as c,o as s,c as a,g as n,p as r,l as _,e as d}from"./index-x_ALk9kT.js";const p={},i=e=>(r("data-v-8008df3a"),e=e(),_(),e),l={class:"container"},f=i(()=>d("h2",null,"测试页面",-1));function u(e,h){const o=c("router-view");return s(),a("div",l,[f,n(o)])}const v=t(p,[["render",u],["__scopeId","data-v-8008df3a"]]);export{v as default};
