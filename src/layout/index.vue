@@ -19,8 +19,16 @@ import content from './content/index.vue'
 import { ElLoading } from 'element-plus';
 
 const background = ref('bg1')
-onMounted(() => {
+onMounted(async () => {
+  // let options = {
+  //   fullscreen: true
+  // }
+  // const loadingInstance = ElLoading.service(options)
   changeBg()
+
+  // nextTick(() => {
+  //   loadingInstance.close()
+  // })
 })
 
 const changeBg = (bg = true) => {
@@ -33,6 +41,7 @@ const changeBg = (bg = true) => {
 .layout_container {
   bottom: 0;
   z-index: 99;
+  transition: background-image 1s;
 
   .top {
     position: fixed;

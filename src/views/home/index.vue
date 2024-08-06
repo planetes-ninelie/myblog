@@ -60,7 +60,7 @@ const lines = ref([
           height: 45px;
           border-right: 2px solid #ffffff;
           animation-delay: var(--after-delay) !important;
-          animation: showInfinite 1s 2 both;
+          animation: showInfinite 0.75s 3 both;
 
           @keyframes showInfinite {
 
